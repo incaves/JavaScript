@@ -29,3 +29,16 @@ console.log(strUn(arr));
 // 3.字符串去重
 const set = new Set(arr);
 console.log([...set].join(''));
+
+// 4.字符串去重
+function unique(arr) {
+    var result = []
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i]
+        if (result.indexOf(item) === -1) {
+            result.push(item)
+        }
+    }
+    return result.join('')
+}
+console.log(unique(arr));

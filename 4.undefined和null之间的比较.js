@@ -8,7 +8,7 @@ console.log(Boolean(undefined)); // false
 console.log(Boolean(null)); // false
 // 3.如果都转为对象 都会抛出一个TypeError的错误
 
-// 4.undefined是 派生与 null的 在非严格模式下 true
+// 4.undefined是 派生于 null的 在非严格模式下 true
 console.log(undefined == null); // true 非严格模式下
 console.log(undefined === null); // false 严格模式
 
