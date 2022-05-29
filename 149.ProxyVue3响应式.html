@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="textInput" />
+    <p id="textP"></p>
+    <script>
+      // 实现的效果 在文本框中输入,输入的内容会在p标签中进行展示
+      // 1.获取DOM
+      let input = document.getElementById('textInput')
+      let p = document.getElementById('textP')
+      // 2.给文本框条件事件 key up
+      input.addEventListener('keyup', function (e) {
+        proxy.text = e.target.value
+      })
+      // 3.把输入的值交给 obj中的text
+      let obj = {
+        text: '',
+      }
+      // 4. 使用Proxy
+      let proxy = new Proxy(obj, {
+        set(target, key, value) {
+          // obj 中是否有这个属性
+          if (target.hasOwnProperty(key)) {
+            // 存在
+            p.innerHTML = value
+            // 给文本框一个初始值
+            // input.value = value
+          }
+        },
+      })
+    </script>
+  </body>
+</html>
