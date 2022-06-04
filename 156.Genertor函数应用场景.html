@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Generator 异步解决方案
+      function* main() {
+        let result = yield request('https://gitee.com/') // 2 暂停 执行后面的函数
+        let res = JSON.parse(result) // 4
+        console.log(res.value) // 5
+      }
+      function request(url) {
+        // 3 发送请求
+        makeAjaxCall(url, function (resopnse) {
+          it.next(resopnse)
+        })
+      }
+      let it = main()
+      it.next() // 1
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="切换图片" id="btn" />
+    <img src="img/1.jpeg" alt="" style="width: 300px; height: 300px" id="mv" />
+    <script>
+      // 传统写法
+      let button = document.getElementById('btn')
+      let img = document.getElementById('mv')
+      let falg = 0
+      button.onclick = function () {
+        if (falg === 0) {
+          img.src = 'img/2.jpeg'
+          falg = 1
+        } else {
+          img.src = 'img/1.jpeg'
+          falg = 0
+        }
+      }
+      // ---------
+      // Genertor
+      let it = f(0)
+      button.onclick = function () {
+        it.next()
+      }
+      function* f(falg) {
+        // 死循环
+        while (true) {
+          img.src = 'img/2.jpeg' // 切换
+          yield falg // 暂停
+          img.src = 'img/1.jpeg' // 切换
+          yield falg // 暂停
+        }
+      }
+    </script>
+  </body>
+</html>
