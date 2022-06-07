@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Perseon(name, age) {
+        // this添加的成员就是实例成员
+        // 实例成员只能通过实例化的对象来访问
+        this.name = name
+        this.age = age
+        this.sing = () => {
+          console.log('人类')
+        }
+        // 访问不到(不是实例成员)
+        age = 91
+      }
+      // 实例化
+      var zs = new Perseon('张三', 19)
+      var ls = new Perseon('李四', 19)
+      console.log(zs) // 实例成员的访问方式
+      // 在构造函数的本事添加一个成员(静态成员)
+      Perseon.sex = '男'
+      console.log(Perseon.sex) // 静态成员只能这样访问(构造函数)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      var that
+      Person.prototype.sing = function () {
+        console.log('人类')
+        that = this // 保存this
+      }
+      var zs = new Person('张三', 19)
+      zs.sing()
+      // 1.在构造函数的this指向的是对象实例(zs)
+      // 2.原型对象上的指向的是实例对象
+      console.log(that === zs) // true
+    </script>
+  </body>
+</html>

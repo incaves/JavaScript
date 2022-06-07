@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 对象原型(__proto__)和构造函数(prototype)原型对象里都存在一个constructor
+      // constructor称之为构造函数,它指向构造函数本事
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      //   Person.prototype.sing = function () {
+      //     console.log('人类')
+      //   }
+      //   Person.prototype.weihte = function () {
+      //     console.log('喝水')
+      //   }
+      // 很多情况下,需要手动的利用constructor这个属性,指回原来的构造函数
+      // 这样 constructor 引用了的是Object
+      // 如果修改了原型对象,给原型对象赋值的是一个对象而不是一个属性或方法
+      // constructor 引用的是Object 需要手动指回 就可以知道这个方法是那个原型对象创建出来的
+      Person.prototype = {
+        constructor: Person, // 指回
+        sing: function () {
+          console.log('人类')
+        },
+        weihte: function () {
+          console.log('喝水')
+        },
+      }
+      var zs = new Person('张三', 19)
+      // 主要的作用是记录该对象引用了那个构造函数
+      console.log(Person.prototype.constructor)
+      console.log(zs.__proto__.constructor)
+    </script>
+  </body>
+</html>

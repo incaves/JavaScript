@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 通过原型对象把求和的方法 添加到数组中
+      console.log(Array.prototype)
+      // 自定义一个求和方法
+      Array.prototype.sum = function () {
+        var sum = 0
+        console.log(this)
+        // this 指向的是调用者 对象实例
+        for (var i = 0; i < this.length; i++) {
+          sum += this[i]
+        }
+        return sum
+      }
+      // 实例对象
+      var arr = [1, 2, 3, 4]
+      console.log(arr.sum())
+      console.log(Array.prototype)
+      var arr1 = new Array(11, 22)
+      console.log(arr1.sum())
+    </script>
+  </body>
+</html>

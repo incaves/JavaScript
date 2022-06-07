@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      Person.prototype.sing = function () {
+        console.log('人类')
+      }
+      Person.prototype.sex = '男'
+      Object.prototype.gender = '女'
+      var zs = new Person('张三', 19)
+      zs.gid = '某'
+      console.log(zs.gid) // 对象自身的属性
+      console.log(zs.sex) // 实例的原型上的属性
+      console.log(zs.gender) // 原型的原型(Objcet)的属性
+      console.log(zs.xx) // undefined 找不到了
+      // 如果对象自身有该属性 原型上也有 使用自身的
+      console.log(zs.toString()) // 可以使用
+      console.log(Object.prototype.toString())
+    </script>
+  </body>
+</html>

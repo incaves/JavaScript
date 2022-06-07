@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      Person.prototype.sing = function () {
+        console.log('人类')
+      }
+      var zs = new Person('张三', 19)
+      console.log(Person.prototype.__proto__ === Object.prototype) // true
+      console.log(Object.prototype.__proto__) // null
+      // 只要是个对象都有__proto__ 指向该对象的原型
+      // 首先往该对象的原型对象上看有没有某一个方法,如果没有向该对象的原型对象上查找 一层层的查找 就是原型链
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 一般用于查找数组中是否有满足条件的元素
+      // 如果有返回true 没有返回false 布尔值
+      // 只要有一个满足条件就不会看后面的了
+      // value index arr
+      var arr = [10, 20, 30]
+      var result = arr.some((value, idnex, arr) => {
+        return value >= 20
+      })
+      console.log(result) // true
+      var arr1 = ['Vue', 'React', 'Angules']
+      var res = arr1.some(item => item == 'React')
+      console.log(res) // true
+    </script>
+  </body>
+</html>

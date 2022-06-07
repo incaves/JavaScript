@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name
+        this.age = age
+      }
+      Person.prototype.sing = function () {
+        console.log('人类')
+      }
+      var zs = new Person('张三', 19)
+      // 为什么定义方法定义在了原型上,而对象实例可以使用这个方法呢?
+      // 每个对象都会有一个__proto__ 指向构造函数的prototype
+      zs.sing()
+      console.log(zs)
+      // 等价的
+      console.log(zs.__proto__ === Person.prototype) // true
+      // 方法的查找规则,首先先看实例对象身上有sing方法,如果有就执行这个对象身上的sing
+      // 如果没有,通过__proto__ 就去构造函数的原型prototype上去找
+    </script>
+  </body>
+</html>

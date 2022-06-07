@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fun(x, y) {
+        console.log(x, y)
+        console.log(this) // 目前指向window
+      }
+      // 1.call 可以调用函数
+      fun.call()
+      // 2.也可以修改this的指向
+      var obj = { x: 1 }
+      fun.call(obj)
+      // 3.也可以传递参数(和形参对应)
+      fun.call(obj, 1, 2)
+    </script>
+  </body>
+</html>

@@ -11,10 +11,10 @@ Person.prototype.sayHi = function () {
 }
 function New() {
   var obj = {}
-  // 让构造函数的this指向obj 并把参数传递过去
-  Person.apply(obj, arguments)
   // 让实例对象的__proto__指向Person的原型对象
   obj.__proto__ = Person.prototype
+  // 让构造函数的this指向obj 并把参数传递过去
+  Person.apply(obj, arguments)
   return obj
 }
 New('张三', 20) // { name: '张三', age: 20 }

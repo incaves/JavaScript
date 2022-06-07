@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造函数存在浪费内存的问题
+      // 例如 往内存中添加了 name age 等属性 他们是简单数据类型
+      // 而sing方法是复杂数据类型 需要重新开辟一块新的内存空间
+      // 如果在实例化一个对象 sing方法还是会重新开辟一块新的内存空间
+      function Perseon(name, age) {
+        this.name = name
+        this.age = age
+        // this.sing = function () {
+        //   console.log('人类')
+        // }
+      }
+      // 每个构造函数都有一个prototype对象(原型对象)
+      console.dir(Perseon)
+      // 可以把一些不变的方法定义在protoyupe中 这样所有对象的实例就可以共享这些方法
+      Perseon.prototype.sing = function () {
+        console.log('人类')
+      }
+      var zs = new Perseon('张三', 19)
+      var ls = new Perseon('李四', 19)
+      console.log(zs.sing === ls.sing) // false(地址不同)
+      zs.sing()
+      ls.sing()
+      console.log(zs.sing === ls.sing) // true 因为使用了原型
+      // 一般情况下
+      //  公共属性定义到构造函数里
+      //  公共的方法定义在原型上
+    </script>
+  </body>
+</html>

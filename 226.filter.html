@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 会返回一个新数组 主要筛选出数组中满足条件的元素
+      var arr = [12, 33, 66]
+      // value 数组当前想的值
+      // index 索引
+      // arr 数组本身
+      let result = arr.filter((value, index, arr) => {
+        return value > 20
+      })
+      console.log(result)
+    </script>
+  </body>
+</html>
