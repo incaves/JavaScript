@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 为整个Js开启严格模式
+      'use strict'
+    </script>
+    <script>
+      ;(function () {
+        'use strict'
+        var num = 10
+        function fun() {}
+      })()
+    </script>
+    <script>
+      function fn() {
+        // 函数单独的严格模式
+        'use strict'
+      }
+      function fun1() {
+        // 普通模式
+      }
+    </script>
+  </body>
+</html>

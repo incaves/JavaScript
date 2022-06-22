@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>周一</li>
+      <li>周二</li>
+      <li>周三</li>
+      <li>周四</li>
+    </ul>
+    <script>
+      var lis = document.querySelector('.nav').querySelectorAll('li')
+      // 同步
+      for (var i = 0; i < lis.length; i++) {
+        //  异步 这里打印的是 console.log(lis[4].innerHTML)
+        ;(function (i) {
+          setTimeout(function () {
+            console.log(lis[i].innerHTML)
+          }, 1000)
+        })(i)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 闭包应用-计算打车的价格
+      // 打车起步价是13(3公里内),之后多一公里增加5元
+      // 如果拥堵 增加10元
+      // 输入公里数计算打车价格
+      var Calculate = (function () {
+        var start = 13 // 起步价 局部变量
+        var total = 0 // 总价格  局部变量
+        return {
+          // 下面的两个函数用到了另一个作用域中的局部变量 形成了闭包
+          // 正常的总价
+          price: function (n) {
+            if (n <= 3) {
+              total = 13 // 没有超过三公里
+            } else {
+              total = start + (n - 3) * 5 // 例如是5公里 13 + 5 - 3 * 5 = 23
+            }
+            return total
+          },
+          // 拥堵
+          congestion: function (flag) {
+            return flag ? total + 10 : total
+          },
+        }
+      })()
+      // 调用
+      console.log(Calculate.price(7)) // 形势了7公里 应付33元
+      console.log(Calculate.congestion(true)) // 拥堵了应付 43
+      console.log(Calculate.price(1)) // 形势了1公里 应付13元
+      console.log(Calculate.congestion(false)) // 没有拥堵 应付13
+    </script>
+  </body>
+</html>

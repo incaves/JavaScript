@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击移动</button>
+    <div></div>
+    <!-- 缓动动画就是让元素运动速度有所变化,最常见的是让速度慢慢停下来 -->
+    <script>
+      // 1. 让盒子每次移动的距离慢慢变小,速度就会慢慢落下来
+      // (目标值 - 现在的位置) / 10 作为每次移动的距离步长
+      // 第一次移动 (100 - 0) / 10 = 10
+      // 第二次移动 (100 - 10) / 10 = 9
+      // 第三次移动 (100 - 19) / 10 = 8.1
+      function animate(obj, target, time) {
+        clearInterval(obj.timer)
+        obj.timer = setInterval(() => {
+          // 计算步长
+          var step = Math.ceil((target - obj.offsetLeft) / 10)
+          step = step > 0 ? Math.ceil(step) : Math.floor(step)
+          if (obj.offsetLeft == target) {
+            clearInterval(obj.timer)
+          }
+          obj.style.left = obj.offsetLeft + step + 'px'
+        }, time)
+      }
+      var div = document.querySelector('div')
+      var btn = document.querySelector('button')
+      btn.addEventListener('click', function () {
+        animate(div, 500, 15)
+      })
+    </script>
+  </body>
+</html>

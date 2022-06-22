@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button>点击</button>
+    <script>
+      // 如果有的函数不需要立即调用(例如:call,apply会立即调用)
+      // 又想改变函数this的指向,此时用bind会更方便
+      // ----------------
+      // 需求(点击按钮,禁用三秒后,才可以点击)
+      var btn = document.querySelector('button')
+      btn.onclick = function () {
+        this.disabled = true
+        // 定时器中的this指向window 改变它的this 但又不想立即触发 可以使用bind
+        setTimeout(
+          function () {
+            this.disabled = false
+            // 让定时器的this 指向btn
+            // }.bind(btn), 3000);
+            // 让定时器的this 指向外层作用域的this
+          }.bind(this),
+          3000
+        )
+      }
+    </script>
+  </body>
+</html>

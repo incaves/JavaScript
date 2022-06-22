@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" /> <button>提交</button>
+    <div></div>
+    <script>
+      // 只能去除左右两侧的问题
+      var str = '  incaves   '
+      console.log(str)
+      // 返回的是一个新的字符串
+      var str1 = str.trim()
+      console.log(str1)
+    </script>
+    <script>
+      // 表单
+      var input = document.querySelector('input')
+      var btn = document.querySelector('button')
+      var div = document.querySelector('div')
+      btn.onclick = function () {
+        if (input.value.trim() === '') {
+          // 没有输入 但是判断不出空格 可以使用 trim()
+          alert('请输入内容')
+        } else {
+          div.innerHTML = input.value
+        }
+      }
+    </script>
+  </body>
+</html>

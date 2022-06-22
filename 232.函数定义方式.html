@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.自定义函数(命名函数)
+      function fn() {}
+      // 2.函数表达式(匿名函数)
+      var fun = function () {}
+      // 3.利用 new Function
+      var f = new Function('num1', 'num2', 'console.log(num1 + num2)')
+      f(1, 2)
+      // 4.所有的函数都是 Funcation的实例对象 都是通过new出来的
+      console.dir(f instanceof Object) // true
+    </script>
+  </body>
+</html>

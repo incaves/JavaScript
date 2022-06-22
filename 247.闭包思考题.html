@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var name = 'The Window'
+      var obj = {
+        name: 'My Objcet',
+        // 没有闭包的产生 没有局部变量
+        getName: function () {
+          return function () {
+            return this.name // this指向window
+          }
+        },
+      }
+      console.log(obj.getName()()) // The Window
+    </script>
+    <script>
+      var name = 'The Window'
+      var obj = {
+        name: 'My Objcet',
+        getName: function () {
+          var that = this // 有闭包的产生
+          // that是一个局部变量 被另一个作用域使用了
+          return function () {
+            return that.name // 指向obj
+          }
+        },
+      }
+      console.log(obj.getName()()) // My Objcet
+    </script>
+  </body>
+</html>

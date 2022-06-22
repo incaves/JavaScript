@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 核心原理:通过定时器setinterval()不断移动盒子的位置 -->
+    <div></div>
+    <script>
+      var div = document.querySelector('div')
+      // 1.获取盒子当前的位置
+      // 2.让盒子在当前位置加上1个移动距离
+      // 3.利用定时器不断重复第二步
+      // 4.结束定时器的条件
+      // 5.移动的盒子移动需要添加定位,才能element.style.left
+      console.log(div.offsetLeft) // 可以获取到盒子当前的位置
+      var timer = setInterval(() => {
+        if (div.offsetLeft >= 400) {
+          // 大于400 停止运行
+          clearInterval(timer)
+        }
+        div.style.left = div.offsetLeft + 1 + 'px' // 重新赋值
+      }, 30)
+    </script>
+  </body>
+</html>

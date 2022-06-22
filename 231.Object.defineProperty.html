@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Object.defineProperty
+       * 定义新属性或修改原有的属性
+       */
+      var obj = {
+        id: 1,
+        pname: '小米',
+        price: 2000,
+      }
+      // obj.num = 2 新增
+      // obj.price = 1999 修改
+      // 利用新增
+      // 第一个参数(目标对象)
+      // 第二个参数(那个属性)添加或修改
+      Object.defineProperty(obj, 'num', {
+        value: 2, // 添加为多少
+      })
+      Object.defineProperty(obj, 'price', {
+        value: 1999, // 修改为多少
+      })
+      Object.defineProperty(obj, 'id', {
+        writable: false, // 不能被修改(布尔值 true ｜ false)
+      })
+      obj.id = 2
+      Object.defineProperty(obj, 'address', {
+        value: '河北邯郸', // 不想让其他人看到
+        enumerable: false, // 不可枚举的(不能遍历) 默认就是false
+        configurable: false, // 不允许被删除 或者 是否可以再次修改(在其他地方修改)
+      })
+      console.log(Object.keys(obj)) // 没有看到address,num 默认是false
+      delete obj.address // 没有被删除
+      delete obj.pname // 被删除了(没有设置configurable)
+      console.log(obj)
+    </script>
+  </body>
+</html>
